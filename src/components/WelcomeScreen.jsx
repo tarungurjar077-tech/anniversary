@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { Heart, Sparkles, Music } from 'lucide-react';
 import { siteContent } from '../data/siteContent';
 
-export default function WelcomeScreen({ onOpenHeart }) {
+export default function WelcomeScreen({ onOpenHeart, onStartMusic }) {
   const [isOpening, setIsOpening] = useState(false);
   const { openingScreen, dates } = siteContent;
 
   const handleOpenClick = () => {
     if (isOpening) return;
     setIsOpening(true);
+    // Trigger music synchronously inside the click gesture so mobile & desktop browsers never block it
+    if (onStartMusic) {
+      onStartMusic();
+    }
     // Let the envelope unfold visibly before revealing the chapters
     setTimeout(() => {
       onOpenHeart();

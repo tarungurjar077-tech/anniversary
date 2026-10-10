@@ -28,6 +28,7 @@ export default function App() {
   const [autoPlayRequested, setAutoPlayRequested] = useState(false);
   const [burstKey, setBurstKey] = useState(null);
 
+  const musicPlayerRef = useRef(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
 
@@ -85,6 +86,13 @@ export default function App() {
     }
   };
 
+  const handleStartMusicNow = () => {
+    setAutoPlayRequested(true);
+    if (musicPlayerRef.current) {
+      musicPlayerRef.current.playNow();
+    }
+  };
+
   const handleOpenHeart = () => {
     setIsOpened(true);
     setActiveStage(0);
@@ -110,7 +118,12 @@ export default function App() {
       <ParticleBurst triggerKey={burstKey} />
 
       {/* Opening Cinematic Screen (Envelope & Wax Seal) */}
-      {!isOpened && <WelcomeScreen onOpenHeart={handleOpenHeart} />}
+      {!isOpened && (
+        <WelcomeScreen
+          onOpenHeart={handleOpenHeart}
+          onStartMusic={handleStartMusicNow}
+        />
+      )}
 
       {/* Main Experience */}
       {isOpened && (
@@ -240,11 +253,15 @@ export default function App() {
               </div>
             </div>
           </main>
-
-          {/* Persistent Floating Music Player */}
-          <MusicPlayer isAutoPlayRequested={autoPlayRequested} />
         </>
       )}
+
+      {/* Persistent Floating Music Player (audio always mounted so click gesture starts playback immediately) */}
+      <MusicPlayer
+        ref={musicPlayerRef}
+        isAutoPlayRequested={autoPlayRequested}
+        showDock={isOpened}
+      />
     </div>
   );
 }
