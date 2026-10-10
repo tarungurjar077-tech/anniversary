@@ -1,0 +1,393 @@
+/* =========================================================
+   HAPPY ANNIVERSARY MY CUTIE — ANIMATIONS
+   Smooth Keyframes, Envelope 3D, and Maroon & Light Pink Glows
+   ========================================================= */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.4), 0 0 40px rgba(255, 209, 220, 0.25);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255, 182, 193, 0.75), 0 0 60px rgba(255, 209, 220, 0.45);
+  }
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes envelopeFlapOpen {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 3;
+  }
+  100% {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+}
+
+@keyframes letterSlideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translateY(-120px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes waxSealBreak {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3) rotate(15deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.4) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes musicBar {
+  0%, 100% {
+    height: 4px;
+  }
+  50% {
+    height: 16px;
+  }
+}
+
+@keyframes sparkleSpin {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+    opacity: 0.4;
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-sparkle {
+  animation: sparkleSpin 3s linear infinite;
+}
+
+/* Envelope Container and Elements (Maroon & Light Pink Luxury Envelope) */
+.envelope-wrapper {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  perspective: 1000px;
+  margin: 0 auto 2.5rem;
+  cursor: pointer;
+}
+
+.envelope-base {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #6B0F24 0%, #4A0E17 100%);
+  border-radius: 12px;
+  box-shadow: 0 20px 45px rgba(35, 3, 12, 0.7), inset 0 1px 2px rgba(255, 182, 193, 0.45);
+  overflow: visible;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-top: 115px solid #800020;
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(35, 3, 12, 0.45));
+}
+
+.envelope-wrapper.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 160px solid #590D22;
+  border-right: 160px solid #590D22;
+  border-bottom: 120px solid #6B0F24;
+  border-top: 95px solid transparent;
+  border-radius: 0 0 12px 12px;
+  z-index: 4;
+}
+
+.envelope-pocket-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 220px solid #4A0E17;
+  border-right: 160px solid transparent;
+  border-radius: 0 0 0 12px;
+  z-index: 3;
+}
+
+.envelope-pocket-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 220px solid #3B0614;
+  border-left: 160px solid transparent;
+  border-radius: 0 0 12px 0;
+  z-index: 3;
+}
+
+.envelope-letter {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 280px;
+  height: 180px;
+  background: #FFF0F3;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(35, 3, 12, 0.3);
+  z-index: 2;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #FFB6C1;
+}
+
+.envelope-wrapper.is-open .envelope-letter {
+  transform: translateY(-90px);
+}
+
+.wax-seal {
+  position: absolute;
+  top: 90px;
+  left: calc(50% - 28px);
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, #FFD1DC 30%, #FF8FA3 90%);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(35, 3, 12, 0.5), inset 0 2px 3px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  color: #800020;
+  transition: all 0.5s ease;
+  border: 2px solid #FFF0F3;
+}
+
+.envelope-wrapper.is-open .wax-seal {
+  transform: scale(0) rotate(90deg);
+  opacity: 0;
+}
+
+/* Audio equalizer bars */
+.eq-bar {
+  width: 3px;
+  background: #FFB6C1;
+  border-radius: 2px;
+  animation: musicBar 1.2s infinite ease-in-out;
+}
+.eq-bar:nth-child(2) { animation-delay: 0.2s; }
+.eq-bar:nth-child(3) { animation-delay: 0.4s; }
+.eq-bar:nth-child(4) { animation-delay: 0.15s; }
+
+/* =========================================================
+   CRAZY MOTION 3D STAGE TRANSITIONS & EFFECTS
+   ========================================================= */
+
+@keyframes stageInNext {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translate3d(60px, 0, -250px) rotateY(-18deg) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes stageInPrev {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translate3d(-60px, 0, -250px) rotateY(18deg) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes neonGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 182, 193, 0.45), inset 0 0 10px rgba(255, 209, 220, 0.25);
+    border-color: rgba(255, 182, 193, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 182, 193, 0.85), 0 0 60px rgba(255, 209, 220, 0.55), inset 0 0 20px rgba(255, 182, 193, 0.35);
+    border-color: #FFD1DC;
+  }
+}
+
+@keyframes floatCrazy {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-2deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1.5deg) scale(0.99);
+  }
+  75% {
+    transform: translateY(-12px) rotate(3deg) scale(1.03);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes spinCrazy3D {
+  0% {
+    transform: perspective(800px) rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: perspective(800px) rotateY(180deg) rotateX(15deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(360deg) rotateX(0deg);
+  }
+}
+
+@keyframes burstParticle {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* 3D Motion Stage Wrapper */
+.stage-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-slide-next {
+  animation: stageInNext 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stage-slide-prev {
+  animation: stageInPrev 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.crazy-glow {
+  animation: neonGlowPulse 2.8s infinite ease-in-out;
+}
+
+.crazy-float {
+  animation: floatCrazy 5s ease-in-out infinite;
+}
+
+/* 3D Interactive Tilt Card */
+.tilt-3d {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tilt-3d:hover {
+  box-shadow: 0 25px 60px rgba(35, 3, 12, 0.65), 0 0 35px rgba(255, 182, 193, 0.5);
+}
